@@ -71,6 +71,12 @@ sub prereqs {
 }
 
 sub run_tests {
+    printf STDERR "\n";
+    printf STDERR "+++ rel2abs('blib/lib')         : %s\n", rel2abs('blib/lib');
+    printf STDERR "+++ rel2abs('blib/lib', cwd)    : %s\n", rel2abs('blib/lib', cwd);
+    printf STDERR "+++ rel2abs('blib/lib', getcwd) : %s\n", rel2abs('blib/lib', getcwd);
+    printf STDERR "\n";
+
     my $harness = TAP::Harness::Env->create({
         verbosity => 0,
         lib       => [ map { rel2abs(catdir(qw/blib/, $_), cwd) } qw/arch lib/ ],
